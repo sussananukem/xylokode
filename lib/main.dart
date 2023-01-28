@@ -42,6 +42,24 @@ class _XylophoneHomeState extends State<XylophoneHome> {
     player.play(AssetSource('note$number.wav'));
   }
 
+  List color = [
+    Colors.deepOrange,
+    Colors.orange,
+    Colors.yellow,
+    Colors.green,
+    Colors.blue,
+    Colors.deepPurpleAccent,
+    Colors.indigo
+  ];
+
+  // List<Widget> allXylo() {
+  //   final newList = <Widget>[];
+  //   for (int i = 1; i <= 7; i++) {
+  //     newList.add(xylobars(color: color[i - 1], number: i));
+  //   }
+  //   return newList;
+  // }
+
   Widget xylobars({required Color color, required int number}) {
     return Expanded(
       child: TextButton(
@@ -79,17 +97,11 @@ class _XylophoneHomeState extends State<XylophoneHome> {
           // padding: EdgeInsets.zero,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            xylobars(color: Colors.deepOrange, number: 1),
-            xylobars(color: Colors.orange, number: 2),
-            xylobars(color: Colors.yellow, number: 3),
-            xylobars(color: Colors.green, number: 4),
-            xylobars(color: Colors.blue, number: 5),
-            xylobars(color: Colors.deepPurpleAccent, number: 6),
-            xylobars(color: Colors.indigo, number: 7),
+            for (int i = 1; i <= 7; i++)
+              xylobars(color: color[i - 1], number: i)
           ],
         ),
       ),
     );
   }
 }
- 
